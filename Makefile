@@ -1,5 +1,5 @@
 export ROOT_DIR=$(CURDIR)
-export DOCKER_REPO=github
+export DOCKER_REPO=ArjenSchwarz
 
 MODULES=$(dir $(wildcard */*/Makefile))
 

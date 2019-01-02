@@ -15,7 +15,7 @@ workflow "Sync To S3" {
 }
 
 action "Sync" {
-  uses = "ArjenSchwarz/actions-aws/s3sync@master"
+  uses = "ArjenSchwarz/actions/aws/s3sync@master"
   args = "--cf-invalidate --default-mime-type=application/json"
   secrets = ["AWS_ACCESS_KEY_ID", "AWS_SECRET_ACCESS_KEY"]
   env = {

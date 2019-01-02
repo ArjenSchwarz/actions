@@ -1,6 +1,6 @@
 workflow "Lint and Test" {
   on = "push"
-  resolves = ["Lint", "Test"]
+  resolves = ["Build"]
 }
 
 action "Lint" {
@@ -15,3 +15,9 @@ action "Test" {
   args = "test"
 }
 
+action "Build" {
+  needs = ["Lint", "Test"]
+  uses = "actions/action-builder/docker@master"
+  runs = "make"
+  args = "build"
+}
