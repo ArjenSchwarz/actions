@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "Fake s3cmd"
+echo "Called with arguments: $*"
