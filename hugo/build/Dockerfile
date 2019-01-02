@@ -10,9 +10,9 @@ LABEL com.github.actions.description="Builds a Hugo site."
 LABEL com.github.actions.icon="sidebar"
 LABEL com.github.actions.color="pink"
 COPY LICENSE README.md /
-RUN apt-get update && apt-get install --no-install-recommends -y openssl curl jq && \
+RUN apt-get update && apt-get install -y openssl curl jq && \
     apt-get -y clean && apt-get -y autoclean && apt-get -y autoremove
 
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["--source-dir ./"]
+CMD ["--verbose"]
