@@ -20,3 +20,7 @@ action "Build" {
   secrets = ["GITHUB_TOKEN"]
 }
 ```
+
+### Secrets
+
+- `GITHUB_TOKEN` – **Required** This grants access to the GitHub API so the action can automatically find the latest version of Hugo.

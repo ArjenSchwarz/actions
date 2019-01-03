@@ -1,16 +1,16 @@
 #!/usr/bin/env bats
 
 function setup() {
-  # Override PATH to mock out the aws cli
-  export PATH="$BATS_TEST_DIRNAME/bin:$PATH"
-  # Ensure GITHUB_WORKSPACE and other required values are set
-  export GITHUB_WORKSPACE='.'
-  export GITHUB_TOKEN="key"
+    # Override PATH to mock out the aws cli
+    export PATH="$BATS_TEST_DIRNAME/bin:$PATH"
+    # Ensure GITHUB_WORKSPACE and other required values are set
+    export GITHUB_WORKSPACE='.'
+    export GITHUB_TOKEN="key"
 }
 
 @test "entrypoint runs successfully when required values are set" {
-  run $GITHUB_WORKSPACE/entrypoint.sh
-  [ "$status" -eq 0 ]
+    run $GITHUB_WORKSPACE/entrypoint.sh
+    [ "$status" -eq 0 ]
 }
 
 @test "entrypoint fails without GITHUB_TOKEN" {

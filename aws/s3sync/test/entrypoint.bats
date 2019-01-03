@@ -22,6 +22,22 @@ function teardown() {
   [ "$status" -eq 0 ]
 }
 
+@test "entrypoint returns without doing anything when ONLY_IN_BRANCH is mismatched" {
+    export ONLY_IN_BRANCH="master"
+    export GITHUB_REF="refs/heads/fakebranch"
+    run $GITHUB_WORKSPACE/entrypoint.sh
+    [ "$status" -eq 0 ]
+    [ "$output" = "$GITHUB_REF was not ${ONLY_IN_BRANCH}, exiting..." ]
+}
+
+@test "entrypoint returns regular output when ONLY_IN_BRANCH is matched" {
+    export ONLY_IN_BRANCH="master"
+    export GITHUB_REF="refs/heads/master"
+    run $GITHUB_WORKSPACE/entrypoint.sh
+    [ "$status" -eq 0 ]
+    [ "$output" != "$GITHUB_REF was not ${ONLY_IN_BRANCH}, exiting..." ]
+}
+
 @test "entrypoint creates .s3cfg correctly when required values are set" {
   run $GITHUB_WORKSPACE/entrypoint.sh
   [ "$status" -eq 0 ]

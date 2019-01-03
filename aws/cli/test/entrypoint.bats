@@ -38,6 +38,22 @@ function setup() {
   [ "${lines[2]}" = "AWS_DEFAULT_OUTPUT: text" ]
 }
 
+@test "entrypoint returns without doing anything when ONLY_IN_BRANCH is mismatched" {
+    export ONLY_IN_BRANCH="master"
+    export GITHUB_REF="refs/heads/fakebranch"
+    run $GITHUB_WORKSPACE/entrypoint.sh
+    [ "$status" -eq 0 ]
+    [ "$output" = "$GITHUB_REF was not ${ONLY_IN_BRANCH}, exiting..." ]
+}
+
+@test "entrypoint returns regular output when ONLY_IN_BRANCH is matched" {
+    export ONLY_IN_BRANCH="master"
+    export GITHUB_REF="refs/heads/master"
+    run $GITHUB_WORKSPACE/entrypoint.sh
+    [ "$status" -eq 0 ]
+    [ "$output" != "$GITHUB_REF was not ${ONLY_IN_BRANCH}, exiting..." ]
+}
+
 @test "output is preserved" {
   export HOME="$BATS_TMPDIR"
   export GITHUB_ACTION="github_action"
