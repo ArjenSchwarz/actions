@@ -5,8 +5,8 @@ if [ -n "$ONLY_IN_BRANCH" ] && [ "$GITHUB_REF" != "refs/heads/${ONLY_IN_BRANCH}"
 	exit 0
 fi
 
-if [ -z "$PUBLIC_PATH" ]; then
-    PUBLIC_PATH=public
+if [ -z "$SOURCE_PATH" ]; then
+    SOURCE_PATH=public
 fi
 
 if [ -z "$GITHUB_TOKEN" ]; then
@@ -15,10 +15,10 @@ if [ -z "$GITHUB_TOKEN" ]; then
 fi
 
 if [ -n "${DOMAIN}" ]; then
-    echo "${DOMAIN}" > "${GITHUB_WORKSPACE}/${PUBLIC_PATH}/CNAME"
+    echo "${DOMAIN}" > "${GITHUB_WORKSPACE}/${SOURCE_PATH}/CNAME"
 fi
 
-output=$(gh-pages -d $PUBLIC_PATH -b gh-pages -u "github-actions-bot <support+actions@github.com>")
+output=$(gh-pages -d $SOURCE_PATH -b gh-pages -u "github-actions-bot <support+actions@github.com>")
 retval=$?
 
 if [ $retval -ne 0 ]; then

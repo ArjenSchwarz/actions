@@ -37,7 +37,7 @@ function setup() {
 }
 
 @test "Can override directory correctly" {
-    export PUBLIC_PATH="OTHER-PATH"
+    export SOURCE_PATH="OTHER-PATH"
     run $GITHUB_WORKSPACE/entrypoint.sh
     echo "$output"
     [ "$status" -eq 0 ]
@@ -52,16 +52,15 @@ function setup() {
 }
 
 @test "entrypoint fails if gh-pages fails" {
-    export PUBLIC_PATH="FAIL"
+    export SOURCE_PATH="FAIL"
     run $GITHUB_WORKSPACE/entrypoint.sh
     [ "$status" -eq 1 ]
-    echo "$output"
     [ "$output" = "gh-pages failed: 1" ]
 }
 
 @test "Create CNAME file if DOMAIN is specified" {
     export DOMAIN="ig.nore.me"
-    export PUBLIC_PATH="."
+    export SOURCE_PATH="."
     export GITHUB_WORKSPACE=$BATS_TMPDIR
     run ./entrypoint.sh
     [ "$status" -eq 0 ]
