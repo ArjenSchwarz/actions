@@ -31,6 +31,7 @@ function setup() {
 
 @test "Default directory is set to public" {
     run $GITHUB_WORKSPACE/entrypoint.sh
+    echo "$output"
     [ "$status" -eq 0 ]
     [ "$output" = "Ran with directory public" ]
 }
@@ -38,6 +39,7 @@ function setup() {
 @test "Can override directory correctly" {
     export PUBLIC_PATH="OTHER-PATH"
     run $GITHUB_WORKSPACE/entrypoint.sh
+    echo "$output"
     [ "$status" -eq 0 ]
     [ "$output" = "Ran with directory OTHER-PATH" ]
 }
