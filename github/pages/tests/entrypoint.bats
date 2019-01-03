@@ -48,7 +48,7 @@ function setup() {
     unset GITHUB_TOKEN
     run $GITHUB_WORKSPACE/entrypoint.sh
     [ "$status" -eq 1 ]
-    [ "$output" == "Please add GITHUB_TOKEN to the secrets of your Workflow." ]
+    [ "$output" = "Please add GITHUB_TOKEN to the secrets of your Workflow." ]
 }
 
 @test "entrypoint fails if gh-pages fails" {
@@ -56,7 +56,7 @@ function setup() {
     run $GITHUB_WORKSPACE/entrypoint.sh
     [ "$status" -eq 1 ]
     echo "$output"
-    [ "$output" == "gh-pages failed: 1" ]
+    [ "$output" = "gh-pages failed: 1" ]
 }
 
 @test "Create CNAME file if DOMAIN is specified" {
@@ -66,5 +66,5 @@ function setup() {
     run ./entrypoint.sh
     [ "$status" -eq 0 ]
     cnamefile=$(cat "$GITHUB_WORKSPACE/CNAME")
-    [ "$cnamefile" == "$DOMAIN" ]
+    [ "$cnamefile" = "$DOMAIN" ]
 }

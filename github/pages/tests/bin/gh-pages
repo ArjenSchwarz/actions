@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$2" == "FAIL" ]; then
+if [ "$2" = "FAIL" ]; then
     exit 1
 fi
 
