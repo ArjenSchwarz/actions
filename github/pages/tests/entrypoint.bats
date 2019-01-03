@@ -56,3 +56,13 @@ function setup() {
     echo "$output"
     [ "$output" == "gh-pages failed: 1" ]
 }
+
+@test "Create CNAME file if DOMAIN is specified" {
+    export DOMAIN="ig.nore.me"
+    export PUBLIC_PATH="."
+    export GITHUB_WORKSPACE=$BATS_TMPDIR
+    run ./entrypoint.sh
+    [ "$status" -eq 0 ]
+    cnamefile=$(cat "$GITHUB_WORKSPACE/CNAME")
+    [ "$cnamefile" == "$DOMAIN" ]
+}

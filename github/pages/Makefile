@@ -2,7 +2,7 @@ include ../../docker.mk
 include ../../help.mk
 include ../../shell.mk
 
-IMAGE_NAME=hugo-build
+IMAGE_NAME=github-pages
 
 .PHONY: clean
 clean: ## Clean up after the build process.

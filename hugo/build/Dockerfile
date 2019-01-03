@@ -9,10 +9,10 @@ LABEL com.github.actions.name="GitHub Action for Hugo"
 LABEL com.github.actions.description="Builds a Hugo site."
 LABEL com.github.actions.icon="sidebar"
 LABEL com.github.actions.color="purple"
-COPY LICENSE README.md /
 RUN apt-get update && apt-get install -y openssl curl jq && \
     apt-get -y clean && apt-get -y autoclean && apt-get -y autoremove
 
+COPY LICENSE README.md /
 COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["--verbose"]

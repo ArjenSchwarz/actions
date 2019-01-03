@@ -14,6 +14,10 @@ if [ -z "$GITHUB_TOKEN" ]; then
     exit 1
 fi
 
+if [ -n "${DOMAIN}" ]; then
+    echo "${DOMAIN}" > "${GITHUB_WORKSPACE}/${PUBLIC_PATH}/CNAME"
+fi
+
 output=$(gh-pages -d $PUBLIC_PATH -b gh-pages -u "github-actions-bot <support+actions@github.com>")
 retval=$?
 
