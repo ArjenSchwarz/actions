@@ -1,6 +1,6 @@
-# GitHub Pages action
+# GitHub Release action
 
-GitHub action that deploys files to be released.
+GitHub action that deploys files as a release.
 
 This action uses [ghr](https://github.com/tcnksm/ghr).
 
@@ -17,12 +17,16 @@ workflow "Deploy to GitHub Release" {
 action "Deploy" {
   uses = "ArjenSchwarz/actions/github/release@master"
   secrets = ["GITHUB_TOKEN"]
+  args = "-delete"
   env = {
       ONLY_IN_BRANCH="master"
       SOURCE_PATH="dist"
+      VERSION="latest"
   }
 }
 ```
+
+Arguments you provide will be parsed as options for ghr. Look at [the documentation](https://github.com/tcnksm/ghr#options) for their meaning.
 
 ### Secrets
 
@@ -30,6 +34,6 @@ action "Deploy" {
 
 ### Environment variables
 
-- `SOURCE_PATH` - **Optional** The path you wish to deploy. Defaults to `public`.
-- `DOMAIN` - **Optional** The URL of your custom domain name.
+- `SOURCE_PATH` - **Optional** The path you wish to deploy. Defaults to `output`.
+- `VERSION` - **Optional** The version you wish to deploy to. Defaults to `pre-release`.
 - `ONLY_IN_BRANCH` - **Optional** Only run the action in the branch you specify.
