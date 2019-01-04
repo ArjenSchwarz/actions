@@ -11,7 +11,7 @@ LABEL com.github.actions.description="Zip files."
 LABEL com.github.actions.icon="blue"
 LABEL com.github.actions.color="box"
 
-RUN apk add --no-cache zip
+RUN apk add --no-cache --update zip make
 
 ENTRYPOINT ["zip"]
 CMD ["--help"]
