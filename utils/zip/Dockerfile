@@ -3,7 +3,7 @@ FROM alpine:3.7
 LABEL name="utils-zip"
 LABEL version="1.0.0"
 LABEL repository="https://github.com/ArjenSchwarz/actions"
-LABEL homepage="https://github.com/ArjenSchwarz/actions/github/release"
+LABEL homepage="https://github.com/ArjenSchwarz/actions/utils/zip"
 
 LABEL maintainer="Arjen Schwarz <developer@arjen.eu>"
 LABEL com.github.actions.name="Zip"
