@@ -1,4 +1,4 @@
-# GitHub Release action
+# Zip action
 
 GitHub action that lets you zip things.
 
