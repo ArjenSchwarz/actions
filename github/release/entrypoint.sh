@@ -26,6 +26,7 @@ output="$output\nghr version output: $(ghr version)"
 IFS='/' read -r -a REPO_ARRAY <<< "${GITHUB_REPOSITORY}"
 
 output="$output\nBuilding with command: ghr -t ${GITHUB_TOKEN} -u ${REPO_ARRAY[0]} -r ${REPO_ARRAY[1]} --debug $* ${VERSION} ${SOURCE_PATH}"
+echo -e "$output"
 output="$output\n$(ghr -t "${GITHUB_TOKEN}" -u "${REPO_ARRAY[0]}" -r "${REPO_ARRAY[1]}" --debug "$*" "${VERSION}" "${SOURCE_PATH}")"
 # Capture output
 
