@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 LABEL name="github-release"
-LABEL version="1.0.0"
+LABEL version="1.0.1"
 LABEL repository="https://github.com/ArjenSchwarz/actions"
 LABEL homepage="https://github.com/ArjenSchwarz/actions/github/release"
 
@@ -16,6 +16,5 @@ RUN apt-get update && apt-get install -y openssl curl jq git && \
 
 COPY entrypoint.sh /entrypoint.sh
 
-COPY "entrypoint.sh" "/entrypoint.sh"
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["help"]
