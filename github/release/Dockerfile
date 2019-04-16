@@ -17,4 +17,4 @@ RUN apt-get update && apt-get install -y openssl curl jq git && \
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["help"]
+# CMD ["help"]
